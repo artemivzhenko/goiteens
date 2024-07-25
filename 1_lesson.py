@@ -14,3 +14,5 @@ get_user()
 # int = Integer
 # str = String
 # float = Float
+
+# Дописати у функції питання про місце проживання
