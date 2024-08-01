@@ -22,8 +22,16 @@ def Ex14():
 
     print("My " + user_animal + " is a beautiful animal." + " Its name is " + user_animal_name + ".")
 
-Ex13()
-Ex14()
+
+
+def HomeWork():
+    print("*****")
+    print("****")
+    print("***")
+    print("**")
+    print("*")
+
+HomeWork()
 
 
 
