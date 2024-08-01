@@ -50,6 +50,19 @@ print(x_int)
 print(y_int)
 
 
+if 5 > 3:
+    print("5 is greater than 3")
+    print("Hello")
+    print("World")
+
+
+if 6 > 4:
+    print("5 is greater than 4")
+    print("We call this function from elif block")
+else:
+    print("We call this function from else block")
+
+
 # BOOLEAN
 
 first_boolean: bool = True
