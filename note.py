@@ -81,3 +81,9 @@ print("New value of A (after negation):", a)
 print("New value of B (after negation):", b)
 
 
+practice_boolean: bool = 5 * 10 == 74
+print(practice_boolean)
+practice_boolean_2: bool = "Pavlo" != "Ivan"
+print(practice_boolean_2)
+practice_boolean_3: bool = "Andrii" == "Petro"
+print(practice_boolean_3)
