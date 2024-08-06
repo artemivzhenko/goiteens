@@ -54,6 +54,8 @@ if 5 > 3:
     print("5 is greater than 3")
     print("Hello")
     print("World")
+elif 8 < 4:
+    print("8 is greater than 4")
 
 
 if 6 > 4:
@@ -100,3 +102,5 @@ practice_boolean_2: bool = "Pavlo" != "Ivan"
 print(practice_boolean_2)
 practice_boolean_3: bool = "Andrii" == "Petro"
 print(practice_boolean_3)
+
+
