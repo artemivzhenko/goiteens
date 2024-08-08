@@ -28,24 +28,3 @@ print(lower_s.islower())
 
 capitalized = lower_s.capitalize()
 print(capitalized)
-
-# INTEGER, FLOAT
-
-x: float = 13.56
-y: float = -5.1
-
-print("X * Y = " + str(x * y))
-print("X + Y = " + str(x + y))
-print("X - Y = " + str(x - y))
-print("X / Y = " + str(x / y))
-print("X ** Y = " + str(x ** -y))
-print("X // Y = " + str(x // y))
-print("X % Y = " + str(x % y))
-str_x: str = str(x)
-str_y: str = str(y)
-
-x_int: int = int(float(str_x))
-y_int: int = int(float(str_y))
-print(x_int)
-print(y_int)
-
