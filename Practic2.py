@@ -90,7 +90,5 @@ def HomeWork():
     print("*")
 
 
-Practic3()
-
 
 
