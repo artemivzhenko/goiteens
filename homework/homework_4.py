@@ -40,4 +40,3 @@ match operation:
         print(number_1 * number_2)
     case _:
         print("Incorrect operation")
-        
