@@ -2,10 +2,7 @@ number_str = input("Введіть число в діапазоні 1-999: ")
 length = len(number_str)
 number = int(number_str)
 
-if number % 2 == 0:
-    par = "Парне"
-else:
-    par = "Непарне"
+par = "Парне" if number % 2 == 0 else "Непарне"
 
 if length == 1:
     length_count = "однозначне"
