@@ -17,7 +17,7 @@ b_int: int = int(second_boolean)
 print("Integer value of A:", a_int)
 print("Integer value of B:", b_int)
 
-is_greater: bool = 5 > 3
+is_greater: bool = 5 >= 3
 print("Is 5 greater than 3?", is_greater)
 
 is_equal: bool = (3 + 4) == 7
