@@ -72,11 +72,6 @@ screen = turtle.Screen()
 t = turtle.Turtle()
 
 t.color("blue")
-t.speed(5)
-t.pensize(8)
-for i in range(10):
-    t.circle(i * 5, 180)
+for _ in range(4): turtle.forward(100); turtle.left(90)
 
-t.forward(100)
-t.backward(100)
 turtle.done()
