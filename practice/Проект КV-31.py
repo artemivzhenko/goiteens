@@ -34,9 +34,17 @@ def get_valid_input(prompt, size):
 
 def get_ai_move(board, difficulty):
     available_moves = [(i, j) for i in range(len(board)) for j in range(len(board)) if board[i][j] == " "]
+    if not available_moves:
+        return None 
     if difficulty == "легкий":
         return random.choice(available_moves)
     elif difficulty == "средний":
+        for move in available_moves:
+            board[move[0]][move[1]] = "O"
+            if check_winner(board, "O"):
+                board[move[0]][move[1]] = " "
+                return move
+            board[move[0]][move[1]] = " "
         for move in available_moves:
             board[move[0]][move[1]] = "X"
             if check_winner(board, "X"):
@@ -60,6 +68,8 @@ def get_ai_move(board, difficulty):
 
 def provide_hint(board):
     available_moves = [(i, j) for i in range(len(board)) for j in range(len(board)) if board[i][j] == " "]
+    if not available_moves:
+        return None
     return random.choice(available_moves)
 
 def save_game_result(winner, board_size):
@@ -98,7 +108,11 @@ def tic_tac_toe(board_size, difficulty, show_hint):
         else:
             if is_ai:
                 print("Ход ИИ...")
-                row, col = get_ai_move(board, difficulty)
+                move = get_ai_move(board, difficulty)
+                if move is None:
+                    print("Нет доступных ходов для ИИ.")
+                    break
+                row, col = move
             else:
                 row = get_valid_input(f"Игрок {current_player}, введите номер строки (1-{board_size}): ", board_size)
                 col = get_valid_input(f"Игрок {current_player}, введите номер столбца (1-{board_size}): ", board_size)
@@ -110,8 +124,12 @@ def tic_tac_toe(board_size, difficulty, show_hint):
             continue
 
         if show_hint and current_player == "X":
-            hint_row, hint_col = provide_hint(board)
-            print(f"Подсказка: попробуйте поставить на клетку ({hint_row + 1}, {hint_col + 1})")
+            hint = provide_hint(board)
+            if hint:
+                hint_row, hint_col = hint
+                print(f"Подсказка: попробуйте поставить на клетку ({hint_row + 1}, {hint_col + 1})")
+            else:
+                print("Нет доступных клеток для подсказки.")
 
         if check_winner(board, current_player):
             print_board(board)
@@ -139,7 +157,15 @@ def show_menu():
         choice = input("Выберите опцию (1-3): ").strip()
 
         if choice == "1":
-            board_size = int(input("Выберите размер поля (3х3, 4х4, 5х5): ").strip()[0])
+            while True:
+                try:
+                    board_size = int(input("Выберите размер поля (3, 4, 5): ").strip())
+                    if board_size in [3, 4, 5]:
+                        break
+                    else:
+                        print("Недопустимый размер поля. Выберите 3, 4 или 5.")
+                except ValueError:
+                    print("Недопустимый ввод. Введите число 3, 4 или 5.")
             difficulty = None
             show_hint = input("Хотите включить подсказки? (да/нет): ").lower() == "да"
             if input("Хотите играть против ИИ? (да/нет): ").lower() == "да":
