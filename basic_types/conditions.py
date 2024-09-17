@@ -38,4 +38,13 @@ print(number_x == number_y)         # Х дорівнює У    = False
 print(number_x != number_y)         # X не дорівнює У = True
 print(not (number_x == number_y))   # NOT (Х дорівнює У) = True
 
+number = int(input("Put your number"))
+result = "Число кратне 5 та більше 100" if number % 5 == 0 and number > 100 else "Число не кратне 5 та менше 100"
+
+
+if (number := int(input("Put your number"))) % 5 == 0:
+    print(number * 8)
+    print("Число кратне 5")
+else:
+    print("Число не кратне 5")
 
