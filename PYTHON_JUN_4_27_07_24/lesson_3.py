@@ -16,9 +16,7 @@ my_turtle.up()
 my_turtle.goto(100, 100)
 my_turtle.down()
 #
-# my_turtle.forward(50)
-#
-# my_turtle.reset()                                         # Очистити поле і повернути черепашку на її місце
+# my_turtle.forward(50)# my_turtle.reset()                                         # Очистити поле і повернути черепашку на її місце
 
 
 for _ in range(5):

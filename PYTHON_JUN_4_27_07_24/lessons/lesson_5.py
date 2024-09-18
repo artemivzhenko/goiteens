@@ -66,7 +66,7 @@ turtle.done()
 #
 #
 import turtle
-import time
+
 
 screen = turtle.Screen()
 t = turtle.Turtle()
