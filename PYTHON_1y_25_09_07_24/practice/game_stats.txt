@@ -1,0 +1,4 @@
+Man: 1, Computer: 0, Draw: 0
+Man: 1, Computer: 0, Draw: 0
+Man: 1, Computer: 0, Draw: 0
+Man: 1, Computer: 0, Draw: 0
