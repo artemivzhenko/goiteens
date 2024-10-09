@@ -6,3 +6,10 @@ old_product = input("Введіть товар для заміни->\n")
 products.insert(products.index(old_product), input("Введіть новий товар для заміни->\n"))
 products.remove(old_product)
 [print(f"Історія продуктів {product}") for product in products[::-1]]
+
+names = [
+    ["Artem", "Ivan", "Petro"],
+    ["Andriy", "Arina", "Pavel"],
+    ["Alex", "Andriy", "Viktor"],
+    ["Andriy", "Ivan", "Petro"],
+]
