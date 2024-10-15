@@ -42,14 +42,14 @@ window.mainloop()                                          # Відкриття 
 
 # wn.bgcolor("green")
 # wn.setup(width=0.8, height=0.6)
-# t = turtle.Turtle()
-# t.forward(100)
+# my_turtle = turtle.Turtle()
+# my_turtle.forward(100)
 #
-# t.up()
-# t.forward(50)
-# t.goto(100, 100)
-# t.down()
-# t.forward(100)
+# my_turtle.up()
+# my_turtle.forward(50)
+# my_turtle.goto(100, 100)
+# my_turtle.down()
+# my_turtle.forward(100)
 #
 # turtle.done()
 

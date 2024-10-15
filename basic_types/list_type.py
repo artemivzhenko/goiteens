@@ -7,7 +7,7 @@ print("Artem" in my_first_list)
 print("Ivan" in my_first_list)
 
 str_value = "Artem"
-list_value = ["A", "r", "t", "e", "m"]
+list_value = ["A", "r", "my_turtle", "e", "m"]
 
 for i in "Artem":
     print(i)
