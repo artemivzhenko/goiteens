@@ -1,4 +1,5 @@
 import turtle
+import random
 
 screen = turtle.Screen()
 my_turtle = turtle.Turtle()
@@ -48,10 +49,10 @@ def start_game(x,y):
     my_turtle.penup()
     my_turtle.goto(start_x + 10, start_y - 30)
     my_turtle.color("blue")
-    my_turtle.write("Старт", font=("Arial", 16, "bold"))
+    my_turtle.write("Start", font=("Arial", 16, "bold"))
     my_turtle.goto(finish_x + 10, finish_y + 20)
     my_turtle.color("red")
-    my_turtle.write("Фініш", font=("Arial", 16, "bold"))
+    my_turtle.write("Finish", font=("Arial", 16, "bold"))
 
     my_turtle.hideturtle()
 
@@ -64,8 +65,21 @@ def start_game(x,y):
         # t.shape("triangle")
         t.penup()
         t.goto(start_x + (700 / (num_players + 1)) * (i + 1), start_y)
+        t.setheading(90)
         t.pendown()
         turtles.append(t)
+
+  # Turtle movement
+    race_in_progress = True
+    while race_in_progress:
+        for t in turtles:
+            distance = random.randint(1, 10)  # Random distance 1-10
+            t.forward(distance)
+            if t.ycor() >= finish_y:  # Check if turtle finished
+                race_in_progress = False
+                winner = t.color()[0]
+                print(f"The winner is {winner}")
+                break
 
 my_turtle.penup()
 my_turtle.goto(-50, 0)
