@@ -1,1 +1,0 @@
-result = 5 * user_input if user_input < 10 else user_input**2

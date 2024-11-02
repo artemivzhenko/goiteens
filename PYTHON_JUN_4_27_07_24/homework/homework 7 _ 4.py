@@ -2,7 +2,7 @@ import turtle
 
 
 
-user_input = input("Склільки кутів має бути у фігури\n")
+user_input = input("Склільки сторін має бути у фігури (віл 3 до 5)\n")
 
 User_input = input("Виберіть колір blue,red,yellow чи green\n")
 
