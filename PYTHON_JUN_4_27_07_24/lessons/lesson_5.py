@@ -33,11 +33,11 @@ turtle.done()
 # import time
 #
 # screen = turtle.Screen()
-# t = turtle.Turtle()
+# my_turtle = turtle.Turtle()
 #
 # screen.addshape("crying-vaughn-chat.gif")
-# t.shape("crying-vaughn-chat.gif")
-# t.forward(10)
+# my_turtle.shape("crying-vaughn-chat.gif")
+# my_turtle.forward(10)
 # turtle.done()
 
 #
@@ -46,19 +46,19 @@ turtle.done()
 # import time
 #
 # screen = turtle.Screen()
-# t = turtle.Turtle()
+# my_turtle = turtle.Turtle()
 #
-# t.color("red", "yellow")
-# t.begin_fill()
-# t.forward(100)
-# t.right(90)
-# t.forward(100)
-# t.right(90)
-# t.forward(100)
-# t.right(90)
-# t.forward(100)
-# t.right(90)
-# t.end_fill()
+# my_turtle.color("red", "yellow")
+# my_turtle.begin_fill()
+# my_turtle.forward(100)
+# my_turtle.right(90)
+# my_turtle.forward(100)
+# my_turtle.right(90)
+# my_turtle.forward(100)
+# my_turtle.right(90)
+# my_turtle.forward(100)
+# my_turtle.right(90)
+# my_turtle.end_fill()
 # turtle.done()
 
 
@@ -72,11 +72,6 @@ screen = turtle.Screen()
 t = turtle.Turtle()
 
 t.color("blue")
-t.speed(5)
-t.pensize(8)
-for i in range(10):
-    t.circle(i * 5, 180)
+for _ in range(4): turtle.forward(100); turtle.left(90)
 
-t.forward(100)
-t.backward(100)
 turtle.done()

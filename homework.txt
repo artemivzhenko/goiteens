@@ -3,10 +3,8 @@
 Напишіть програму, яка просить користувача ввести місто, у якому він живе.
 Виведіть назву міста разом із фразою «is a wonderful place!».
 Наприклад: Kyiv is a wonderful place!
-Коміт:
+Коміт: [ADD] homework num2
 Гілка andrii
-[ADD] homework num2
-
 
 
 
