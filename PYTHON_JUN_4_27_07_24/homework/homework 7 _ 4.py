@@ -2,7 +2,7 @@ import turtle
 
 
 
-user_input = input("Склільки сторін має бути у фігури (віл 3 до 5)\n")
+user_input = input("Склільки сторін має бути у фігури (віл 3 до 6)\n")
 
 User_input = input("Виберіть колір blue,red,yellow чи green\n")
 
@@ -50,6 +50,11 @@ elif user_input == "5":
     my_turtle.right(72)
     my_turtle.forward(90)
     my_turtle.right(72)
+
+elif user_input == "6":
+    for _ in range(6):
+        my_turtle.forward(100)
+        my_turtle.right(60)
 
 
 
