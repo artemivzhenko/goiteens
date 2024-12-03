@@ -13,6 +13,7 @@ valid_currencies = ["CRD", "GLM", "TRX"]
 
 log = []
 
+
 def create_wallet():
     name = input("Название кошелька: ").strip()
     if name in wallets:
@@ -32,6 +33,7 @@ def create_wallet():
         print(f"Кошелек {name} создан.")
     except ValueError:
         print("Ошибка: Введите число для баланса.")
+
 
 def convert_currency():
     from_wallet = input("Из какого кошелька переводить: ").strip()
@@ -56,27 +58,46 @@ def convert_currency():
         converted = amount * rate
         wallets[from_wallet]["balance"] -= amount
         wallets[to_wallet]["balance"] += converted
-        log.append(f"Переведено {amount} {from_currency} из {from_wallet} в {converted:.2f} {to_currency} ({to_wallet})")
+        log.append(
+            f"Переведено {amount} {from_currency} из {from_wallet} в {converted:.2f} {to_currency} ({to_wallet})")
         print(f"Успех! {amount} {from_currency} -> {converted:.2f} {to_currency}")
     except ValueError:
         print("Ошибка: Введите число для суммы.")
+
 
 def show_wallets():
     for name, data in wallets.items():
         print(f"{name}: {data['currency']}, баланс: {data['balance']:.2f}")
     log.append("Просмотрены кошельки.")
 
+
 def show_exchange_rates():
     for (from_currency, to_currency), rate in exchange_rates.items():
         print(f"1 {from_currency} -> {rate} {to_currency}")
+
 
 def show_log():
     print("История операций:")
     for record in log:
         print(record)
 
+def show_credits():
+    print("\nСпасибо за использование конвертера валют!")
+    print("Создатели:")
+    print("Директор: Ст. научный сотрудник")
+    print("---------------------------------")
+    print("Программист: Ст. научный сотрудник")
+    print("---------------------------------")
+    print("Помощь с кодом: Иконы")
+    print("Помощь с кодом: Чай")
+    print("---------------------------------")
+    print("Помощь с валютами: ChatGPT-4o")
+    print("---------------------------------")
+    print("Тестеровщики: cw_tab_tab ")
+    print("---------------------------------")
+    print("СПАСИБО ВСЕМ!(хватит мне писать!)")
 def reset_wallets():
-    choice = input("Введите '0', чтобы обнулить баланс, или 'удалить', чтобы удалить кошельки: ").strip().lower()
+    choice = input("Введите '0', чтобы обнулить баланс, или 'удалить', чтобы удалить все кошельки: ").strip().lower()
     if choice == "0":
         for wallet in wallets.values():
             wallet["balance"] = 0
@@ -89,6 +110,7 @@ def reset_wallets():
     else:
         print("Действие отменено.")
 
+
 def main_menu():
     while True:
         print("\nМеню:")
@@ -98,7 +120,7 @@ def main_menu():
         print("4. Показать курсы валют")
         print("5. Показать историю")
         print("6. Сбросить кошельки")
-        print("7. Выйти")
+        print("7. Выйти (Титры)")
         choice = input("Ваш выбор: ")
         if choice == "1":
             create_wallet()
@@ -113,7 +135,7 @@ def main_menu():
         elif choice == "6":
             reset_wallets()
         elif choice == "7":
-            print("Пока!")
+            show_credits()
             break
         else:
             print("Неверный выбор. Попробуйте снова.")
