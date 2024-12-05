@@ -6,6 +6,9 @@ import json
 API_token = ''
 bot = telebot.TeleBot(API_token, parse_mode=None)
 currency_list = ["USD", "EUR", "UAH"]
+stages = {
+
+}
 
 
 @bot.message_handler(commands=['add_wallet'])
@@ -23,13 +26,20 @@ def add_wallet(message):
 
 @bot.message_handler(func=lambda message: message.text in currency_list)
 def set_new_wallet(message):
-    wallet = wallets[str(message.chat.id)]
-    if message.text not in wallet["currencies"]:
-        wallets[str(message.chat.id)]["currencies"].append(message.text)
-        wallets[str(message.chat.id)]["balances"][message.text] = 0.0
-        bot.send_message(message.chat.id, f"Ви додали новий гаманець із валютою {message.text}")
-        return
-    bot.send_message(message.chat.id, f"У вас вже є гаманець із валютою {message.text}")
+    wallet_id = str(message.chat.id)
+    wallet = wallets[wallet_id]
+    match stages[wallet_id]:
+        case 0:
+            if message.text not in wallet["currencies"]:
+                wallets[str(message.chat.id)]["currencies"].append(message.text)
+                wallets[str(message.chat.id)]["balances"][message.text] = 0.0
+                bot.send_message(message.chat.id, f"Ви додали новий гаманець із валютою {message.text}")
+                return
+            bot.send_message(message.chat.id, f"У вас вже є гаманець із валютою {message.text}")
+        case 1:
+            if message.text not in wallet["currencies"]:
+                bot.send_message(message.chat.id, f"Ви не можете додати цю валюту бо не маєте цього гаманця")
+
 
 
 @bot.message_handler(commands=['dump'])
@@ -58,9 +68,10 @@ def send_welcome(message):
 і конвертувати суми між ними за заданими курсами.ʼ
 """
     bot.send_message(message.chat.id, start_message, reply_markup=menu)
-    wallet_id = message.chat.id
+    wallet_id = str(message.chat.id)
+    stages[wallet_id] = 0
     user = message.from_user.full_name
-    if str(wallet_id) not in wallets.keys():
+    if wallet_id not in wallets.keys():
         wallet_pattern = {
             "wallet_id": wallet_id,
             "balances": {
@@ -76,9 +87,13 @@ def send_welcome(message):
         bot.send_message(message.chat.id, register_message, reply_markup=menu)
 
 
+@bot.message_handler(func=lambda message: message.text == "Поповнити рахунок")
+def add_money(message):
+    stages[str(message.chat.id)] = 1
+
+
 @bot.message_handler(func=lambda message: message.text.endwith(" USD"))
 def echo_all(message):
-
     text = message.text
     if "to" in text:
         try:
