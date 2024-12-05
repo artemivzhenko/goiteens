@@ -1,30 +1,46 @@
 wallets = {}
 
 exchange_rates = {
+    ("AST", "CRD"): 1.25,
+    ("CRD", "AST"): 0.8,
     ("CRD", "GLM"): 0.5,
+    ("CRD", "INX"): 0.4545,
     ("CRD", "TRX"): 1.5,
+    ("ECL", "PHA"): 0.55,
     ("GLM", "CRD"): 2.0,
+    ("GLM", "SOL"): 2.5,
     ("GLM", "TRX"): 3.0,
+    ("GRD", "MTR"): 0.25,
+    ("INX", "CRD"): 2.2,
+    ("LNZ", "PRL"): 0.3125,
+    ("MTR", "GRD"): 4.0,
+    ("NEB", "TRX"): 0.9,
+    ("PHA", "ECL"): 1.8,
+    ("PRL", "LNZ"): 3.2,
+    ("SOL", "GLM"): 0.4,
     ("TRX", "CRD"): 0.67,
     ("TRX", "GLM"): 0.33,
+    ("TRX", "NEB"): 1.1,
 }
 
-valid_currencies = ["CRD", "GLM", "TRX"]
+valid_currencies = ["CRD", "GLM", "TRX","AST", "SOL", "NEB", "PHA", "ECL", "PRL", "LNZ", "MTR", "GRD", "INX",]
 
 log = []
 
-
 def create_wallet():
     name = input("Название кошелька: ").strip()
+    if not name:
+        print("Ошибка: Название кошелька не может быть пустым.")
+        return
     if name in wallets:
         print("Ошибка: Такой кошелек уже есть.")
         return
-    currency = input("Валюта кошелька (например, CRD): ").upper()
-    if currency not in valid_currencies:
+    currency = input("Валюта кошелька (например, CRD): ").strip().upper()
+    if not currency or currency not in valid_currencies:
         print("Ошибка: Такой валюты нет.")
         return
     try:
-        balance = float(input("Начальный баланс: "))
+        balance = float(input("Начальный баланс (используйте точку для дробных чисел): ").strip())
         if balance < 0:
             print("Ошибка: Баланс не может быть отрицательным.")
             return
@@ -32,17 +48,26 @@ def create_wallet():
         log.append(f"Создан кошелек {name}: {currency}, баланс {balance}")
         print(f"Кошелек {name} создан.")
     except ValueError:
-        print("Ошибка: Введите число для баланса.")
+        print("Ошибка: Введите число для баланса (например, 100.50).")
 
 
 def convert_currency():
     from_wallet = input("Из какого кошелька переводить: ").strip()
+    if not from_wallet:
+        print("Ошибка: Название кошелька не может быть пустым.")
+        return
     to_wallet = input("В какой кошелек переводить: ").strip()
-    if from_wallet not in wallets or to_wallet not in wallets:
-        print("Ошибка: Кошелек не найден.")
+    if not to_wallet:
+        print("Ошибка: Название кошелька не может быть пустым.")
+        return
+    if from_wallet not in wallets:
+        print("Ошибка: Кошелек отправителя не найден.")
+        return
+    if to_wallet not in wallets:
+        print("Ошибка: Кошелек получателя не найден.")
         return
     try:
-        amount = float(input("Сумма перевода: "))
+        amount = float(input("Сумма перевода (используйте точку для дробных чисел): ").strip())
         if amount < 0:
             print("Ошибка: Сумма не может быть отрицательной.")
             return
@@ -62,7 +87,7 @@ def convert_currency():
             f"Переведено {amount} {from_currency} из {from_wallet} в {converted:.2f} {to_currency} ({to_wallet})")
         print(f"Успех! {amount} {from_currency} -> {converted:.2f} {to_currency}")
     except ValueError:
-        print("Ошибка: Введите число для суммы.")
+        print("Ошибка: Введите корректное число для суммы.")
 
 
 def show_wallets():
@@ -97,16 +122,24 @@ def show_credits():
     print("---------------------------------")
     print("СПАСИБО ВСЕМ!(хватит мне писать!)")
 def reset_wallets():
-    choice = input("Введите '0', чтобы обнулить баланс, или 'удалить', чтобы удалить все кошельки: ").strip().lower()
+    choice = input("Введите '0', чтобы обнулить баланс, '1', чтобы удалить все кошельки, или '2', чтобы удалить один кошелек: ").strip()
     if choice == "0":
         for wallet in wallets.values():
             wallet["balance"] = 0
         log.append("Все балансы обнулены.")
         print("Все балансы обнулены.")
-    elif choice == "удалить":
+    elif choice == "1":
         wallets.clear()
         log.append("Все кошельки удалены.")
         print("Все кошельки удалены.")
+    elif choice == "2":
+        wallet_name = input("Введите название кошелька, который нужно удалить: ").strip()
+        if wallet_name in wallets:
+            del wallets[wallet_name]
+            log.append(f"Кошелек {wallet_name} удален.")
+            print(f"Кошелек {wallet_name} успешно удален.")
+        else:
+            print("Ошибка: Указанный кошелек не найден.")
     else:
         print("Действие отменено.")
 
