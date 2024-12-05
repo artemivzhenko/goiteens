@@ -3,7 +3,7 @@ from telebot.types import ReplyKeyboardMarkup
 import json
 
 
-API_token = '7928693196:AAHi0VsBnrR2sFO8g19_4Xp0sI18-55izoo'
+API_token = ''
 bot = telebot.TeleBot(API_token, parse_mode=None)
 
 currency_list = ["USD", "EUR", "UAH"]
