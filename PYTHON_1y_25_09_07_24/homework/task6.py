@@ -6,4 +6,4 @@
 userName = str(input("Enter your name."))
 userSecondName = str(input("Enter your second name."))
 result = userName + " - " + userSecondName
-print(result.upper())
+print(result.capitalize())
