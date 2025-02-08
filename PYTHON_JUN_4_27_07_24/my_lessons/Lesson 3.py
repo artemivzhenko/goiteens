@@ -1,0 +1,62 @@
+import turtle
+
+window = turtle.Screen()
+window.title("Повноекранне вікно для черепашки")
+window.bgcolor("white")
+window.setup(width=1000, height=600, startx=0, starty=0)
+
+my_turtle = turtle.Turtle()
+# my_turtle.forward(100)
+# my_turtle.up()
+# my_turtle.forward(50)
+# my_turtle.down()
+# my_turtle.forward(100)
+# my_turtle.up()
+# my_turtle.goto(100, 100)
+# my_turtle.down()
+# my_turtle.forward(50)
+# my_turtle.reset()
+# my_turtle.forward(100)
+# my_turtle.left(90)
+# my_turtle.forward(100)
+# my_turtle.left(90)
+# my_turtle.forward(100)
+# my_turtle.left(90)
+# my_turtle.forward(100)
+# my_turtle.forward(50)
+# my_turtle.left(72)
+# my_turtle.forward(50)
+# my_turtle.left(72)
+# my_turtle.forward(50)
+# my_turtle.left(72)
+# my_turtle.forward(50)
+# my_turtle.left(72)
+# my_turtle.forward(50)
+my_turtle.forward(50)
+my_turtle.left(60)
+my_turtle.forward(50)
+my_turtle.left(60)
+my_turtle.forward(50)
+my_turtle.left(60)
+my_turtle.forward(50)
+my_turtle.left(60)
+my_turtle.forward(50)
+my_turtle.left(60)
+my_turtle.forward(50)
+my_turtle.up()
+my_turtle.goto(200, 200)
+my_turtle.down()
+my_turtle.forward(50)
+my_turtle.left(120)
+my_turtle.forward(50)
+my_turtle.left(120)
+my_turtle.forward(50)
+
+
+
+
+
+
+
+turtle.done
+window.mainloop()
